@@ -1,15 +1,19 @@
 {
-  "name": "utools-tmpl",
+  "name": "utools-yys",
   "version": "1.0.0",
   "description": "使用 uTools 模板插件的模板",
   "main": "main.ts",
   "scripts": {
     "dev": "set NODE_ENV=development && rollup -c -w",
-    "build": "set NODE_ENV=production && rollup -c"
+    "dev:generate": "set NODE_ENV=development && rollup -c rollup.config.generate.js -w",
+    "build:preload": "set NODE_ENV=production && rollup -c",
+    "build:generate": "set NODE_ENV=production && rollup -c rollup.config.generate.js && node --icu-data-dir=node_modules/full-icu dist/generate.js",
+    "build": "yarn build:preload && yarn build:generate"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cheerio": "^0.22.21",
     "rollup": "^2.24.0",
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -22,5 +26,11 @@
     "tslib": "^2.0.1",
     "typescript": "^3.9.7"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "encoding": "^0.1.13",
+    "full-icu": "^1.3.1",
+    "tiny-pinyin": "^1.3.0"
+  }
 }

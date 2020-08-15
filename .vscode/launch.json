@@ -6,12 +6,19 @@
   "configurations": [
     {
       "type": "node",
+      "runtimeArgs": [
+        // 转拼音库的中文支持
+        "--icu-data-dir=node_modules/full-icu"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
       "request": "launch",
-      "name": "启动程序",
+      "name": "generate debug",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${file}",
+      "program": "${workspaceFolder}\\dist\\generate.js",
       "outFiles": [
         "${workspaceFolder}/**/*.js"
       ]

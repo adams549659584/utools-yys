@@ -2,11 +2,11 @@
  * @type { import ('./src/types/utools').PluginConfig }
  */
 const pluginConfig = {
-  pluginName: 'utools-tmpl',
+  pluginName: '阴阳师悬赏封印妖怪查询',
   version: 'v1.0.0',
-  description: '使用模板插件模式',
+  description: '阴阳师悬赏封印妖怪刷新地点相关资料',
   author: '罗君',
-  homepage: 'https://github.com/adams549659584/utools-tmpl',
+  homepage: 'https://github.com/adams549659584/utools-yys',
   // main: 'index.html',
   preload: 'preload.js',
   logo: 'assets/img/logo.png',
@@ -23,19 +23,16 @@ const pluginConfig = {
   // },
   features: [
     {
-      code: 'utools_tmpl_hello_none',
-      explain: '无 UI 模式',
-      cmds: ['hello', 'none'],
-    },
-    {
-      code: 'utools_tmpl_hello_list',
-      explain: '列表模式',
-      cmds: ['hello', 'list'],
-    },
-    {
-      code: 'utools_tmpl_hello_doc',
-      explain: '文档模式',
-      cmds: ['hello', 'doc'],
+      code: 'utools_yys_doc',
+      explain: '阴阳师悬赏封印妖怪刷新地点相关资料',
+      cmds: ['yys', '阴阳师', '悬赏', '封印', {
+        type: 'window',
+        label: '阴阳师',
+        match: {
+          app: ['Code.exe'],
+          title: '/Visual/'
+        }
+      }],
     },
   ],
 };

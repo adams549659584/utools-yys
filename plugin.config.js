@@ -29,8 +29,8 @@ const pluginConfig = {
         type: 'window',
         label: '阴阳师',
         match: {
-          app: ['Code.exe'],
-          title: '/Visual/'
+          app: ['onmyoji.exe'],
+          title: '/阴阳师/'
         }
       }],
     },

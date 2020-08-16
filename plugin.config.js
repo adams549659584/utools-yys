@@ -25,7 +25,7 @@ const pluginConfig = {
     {
       code: 'utools_yys_doc',
       explain: '阴阳师悬赏封印妖怪刷新地点相关资料',
-      cmds: ['yys', '阴阳师', '悬赏', '封印', {
+      cmds: ['阴阳师', '悬赏', '封印', {
         type: 'window',
         label: '阴阳师',
         match: {

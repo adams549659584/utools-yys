@@ -1,8 +1,9 @@
 import { getByCoding } from './Helper/HttpHelper';
 import { writeFile, existsSync, mkdirSync } from 'fs';
 import { resolve as pathResolve } from 'path';
-import cheerio = require('cheerio');
-import pinyin = require('tiny-pinyin');
+
+const cheerio = require('cheerio');
+const pinyin = require('tiny-pinyin');
 
 const get = async (url: string): Promise<string> => {
   const data = await getByCoding(url, 'gb2312', null, {

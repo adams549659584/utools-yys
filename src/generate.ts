@@ -1,14 +1,11 @@
-import HttpHelper from './Helper/HttpHelper';
-import { convert } from 'encoding';
-import { IncomingMessage } from 'electron';
+import { getByCoding } from './Helper/HttpHelper';
 import { writeFile, existsSync, mkdirSync } from 'fs';
 import { resolve as pathResolve } from 'path';
-
-const cheerio: CheerioAPI = require('cheerio');
-const pinyin = require('tiny-pinyin');
+import cheerio = require('cheerio');
+import pinyin = require('tiny-pinyin');
 
 const get = async (url: string): Promise<string> => {
-  const data = await HttpHelper.get<IncomingMessage>(url, null, {
+  const data = await getByCoding(url, 'gb2312', null, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
       Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -16,18 +13,7 @@ const get = async (url: string): Promise<string> => {
     },
     responseType: 'stream',
   });
-  // 中文处理
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    data.on('data', chunk => {
-      chunks.push(chunk);
-    });
-    data.on('end', () => {
-      const buffer = Buffer.concat(chunks);
-      const convertResult = convert(buffer, 'utf8', 'gb2312');
-      resolve(convertResult.toString());
-    });
-  });
+  return data;
 };
 
 const saveFile = (content: string, relativePath: string, fileName: string) => {
